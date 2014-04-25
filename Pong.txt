@@ -1,0 +1,26 @@
+
+
+Things that change:
+position of the ball
+position of the paddle
+score
+state of the program
+
+Program:
+  event_loop
+  state.next
+  state.update
+  state.render
+  display.update
+  clock.tick
+
+Game Object Methods:
+  update:
+    get_event
+    movement
+    render
+
+Paddle Object:
+  update
+  move
+  render
