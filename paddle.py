@@ -8,13 +8,13 @@ class Paddle:
         self.screen_rect = screen_rect
         self.surface = pg.Surface([width, height])
         self.rect = self.surface.get_rect()
-        self.x = x
-        self.y = y
+        self.rect.x = x
+        self.rect.y = y
         self.color = color
 
     def move(self, y):
-        self.y += y
+        self.rect.y += y
 
     def render(self, screen):
         self.surface.fill(self.color)
-        screen.blit(self.surface, [self.x, self.y])
+        screen.blit(self.surface, [self.rect.x, self.rect.y])

@@ -20,6 +20,7 @@ while True:
         if event.type == pg.QUIT:
             pg.quit()
     screen.fill((0, 0, 0))
+    ball.update(computer.rect, player.rect)
     ball.render(screen)
     player.render(screen)
     computer.render(screen)
