@@ -46,8 +46,12 @@ class Ball:
         return 0
 
     def collide_paddle(self, paddle_left_rect, paddle_right_rect):
-        if self.rect.colliderect(paddle_left_rect) or self.rect.colliderect(paddle_right_rect):
+        if self.rect.colliderect(paddle_left_rect):
             self.velocity[0] *= -1
+            self.rect.x += 5
+        if self.rect.colliderect(paddle_right_rect):
+            self.velocity[0] *= -1
+            self.rect.x -= 5
 
     def update(self, paddle_left_rect, paddle_right_rect):
         hit_wall = self.collide_walls()
