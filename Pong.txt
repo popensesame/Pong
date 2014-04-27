@@ -18,7 +18,11 @@ Game Object Methods:
   update:
     get_event
     movement
+
     render
+      blit the screen
+      render the ball
+      render the padddles
 
 Paddle Object:
   update

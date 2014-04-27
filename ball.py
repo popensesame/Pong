@@ -1,17 +1,32 @@
 __author__ = 'Matt Geiger'
 
 import pygame as pg
+import random
 
 
 class Ball:
-    def __init__(self, screen_rect, x=400, y=300, width=5, height=5, color=(255, 255, 255)):
+    def __init__(self, screen_rect, x=400, y=300, width=5, height=5, speed=5, color=(255, 255, 255)):
         self.surface = pg.Surface([width, height])
         self.rect = self.surface.get_rect()
         self.rect.x = x
         self.rect.y = y
         self.screen_rect = screen_rect
-        self.velocity = [5, 0]
+        self.velocity = [0, 0]
         self.color = color
+        self.speed = speed
+
+    def get_random_float(self):
+        while True:
+            num = random.uniform(-1.0, 1.0)
+            if num > -.5 and num < .5:
+                continue
+            else:
+                return num
+
+    def set_ball(self):
+        x = self.get_random_float()
+        y = self.get_random_float()
+        self.velocity = [x*self.speed, y*self.speed]
 
     def move(self):
         self.rect.x += self.velocity[0]

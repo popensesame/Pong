@@ -11,9 +11,10 @@ class Game:
         self.screen_rect = screen_rect
         self.screen = screen
         self.ball = _ball.Ball(self.screen_rect)
-        self.player = _paddle.Paddle(screen_rect, 785, 275)
-        self.computer = _paddle.Paddle(screen_rect, 0, 275)
+        self.player = _paddle.Paddle(screen_rect, 750, 275)
+        self.computer = _paddle.Paddle(screen_rect, 50, 275)
         self.done = False
+        self.ball.set_ball()
 
     def render(self):
         self.screen.fill(0)
@@ -28,12 +29,13 @@ class Game:
             if event.key == pg.K_ESCAPE:
                 self.done = True
             if event.key == pg.K_UP:
-                self.player.move(-6)
+                self.player.move(-25)
             if event.key == pg.K_DOWN:
-                self.player.move(6)
+                self.player.move(25)
 
     def update(self):
         self.ball.update(self.computer.rect, self.player.rect)
+        self.computer.move_computer(self.ball.rect.y)
 
 
 
