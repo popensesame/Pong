@@ -39,9 +39,9 @@ class Ball:
     def collide_walls(self):
         if self.rect.x < 0:
             return -1
-        if self.rect.x > self.screen_rect[0]:
+        if self.rect.x > self.screen_rect.width:
             return 1
-        if self.rect.y < 0 or self.rect.y > self.screen_rect[1]:
+        if self.rect.y < 0 or self.rect.y > self.screen_rect.height:
             self.velocity[1] *= -1
         return 0
 

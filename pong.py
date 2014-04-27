@@ -8,8 +8,8 @@ class Pong:
 
     def __init__(self):
         self.clock = pg.time.Clock()
-        self.screen_rect = [800, 600]
-        self.screen = pg.display.set_mode(self.screen_rect)
+        self.screen = pg.display.set_mode([800, 600])
+        self.screen_rect = self.screen.get_rect()
         self.keys = pg.key.get_pressed()
         self.state_dict = {
             "GAME": game.Game(self.screen, self.screen_rect)
