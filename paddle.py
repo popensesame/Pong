@@ -14,13 +14,15 @@ class Paddle:
 
     def move(self, y):
         self.rect.y += y
+        self.rect.clamp_ip(self.screen_rect)
 
     def render(self, screen):
         self.surface.fill(self.color)
         screen.blit(self.surface, [self.rect.x, self.rect.y])
 
-    def move_computer(self, ball_y):
-        if ball_y > self.rect.centery+10:
-            self.move(10)
-        elif ball_y < self.rect.centery-10:
-            self.move(-10)
+    def move_computer(self, ball_y, moving_away_from_ai):
+        if not moving_away_from_ai:
+            if ball_y > self.rect.centery+10:
+                self.move(4)
+            elif ball_y < self.rect.centery-10:
+                self.move(-4)

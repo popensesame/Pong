@@ -14,6 +14,7 @@ class Ball:
         self.velocity = [0, 0]
         self.color = color
         self.speed = speed
+        self.moving_away_from_ai = False
 
     def get_random_float(self):
         while True:
@@ -33,6 +34,10 @@ class Ball:
     def move(self):
         self.rect.x += self.velocity[0]
         self.rect.y += self.velocity[1]
+        if self.velocity[0] < 0:
+            self.moving_away_from_ai = False
+        if self.velocity[0] > 0:
+            self.moving_away_from_ai = True
 
     def render(self, screen):
         self.surface.fill(self.color)

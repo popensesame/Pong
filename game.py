@@ -47,9 +47,9 @@ class Game:
                 self.player.move(25)
 
     def adjust_score(self, hit_wall):
-        if hit_wall == 1:
-            self.score[1] += 1
         if hit_wall == -1:
+            self.score[1] += 1
+        if hit_wall == 1:
             self.score[0] += 1
 
     def update(self):
@@ -57,7 +57,7 @@ class Game:
         if hit_wall:
             self.adjust_score(hit_wall)
             self.ball.set_ball()
-        self.computer.move_computer(self.ball.rect.y)
+        self.computer.move_computer(self.ball.rect.y, self.ball.moving_away_from_ai)
 
     def cleanup(self):
         self.score = [0, 0]
