@@ -36,8 +36,6 @@ class Game:
         self.screen.blit(self.score_surface, self.score_surface_rect)
 
     def get_event(self, event, keys):
-        if event.type == pg.QUIT:
-            pg.quit()
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 self.done = True
