@@ -14,7 +14,3 @@ Run
   While in Pong directory:
 
   $ python app.py
-
-  or
-
-  $ ./python2.7.6/bin/python2.7 ./app.py
