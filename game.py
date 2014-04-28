@@ -20,7 +20,8 @@ class Game:
         self.score_obj = pg.font.Font(None, 48)
         self.score_surface = self.score_obj.render(self.score_text, False, (255, 255, 255))
         self.score_surface_rect = self.score_surface.get_rect()
-        self.score_surface_rect.topleft = (380, 20)
+        self.score_surface_rect.topleft = (360, 20)
+        self.next = "MENU"
 
     def render(self):
         self.screen.fill(0)
@@ -57,6 +58,9 @@ class Game:
             self.adjust_score(hit_wall)
             self.ball.set_ball()
         self.computer.move_computer(self.ball.rect.y)
+
+    def cleanup(self):
+        self.score = [0, 0]
 
 
 
