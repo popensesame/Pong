@@ -26,6 +26,8 @@ class Ball:
     def set_ball(self):
         x = self.get_random_float()
         y = self.get_random_float()
+        self.rect.x = 400
+        self.rect.y = 300
         self.velocity = [x*self.speed, y*self.speed]
 
     def move(self):

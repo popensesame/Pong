@@ -7,6 +7,7 @@ import game
 class Pong:
 
     def __init__(self):
+        pg.init()
         self.clock = pg.time.Clock()
         self.screen = pg.display.set_mode([800, 600])
         self.screen_rect = self.screen.get_rect()
@@ -25,7 +26,7 @@ class Pong:
             self.state.get_event(event, self.keys)
 
     def run(self):
-        while True:
+        while not self.state.done:
             self.event_loop()
             self.state.update()
             self.state.render()
