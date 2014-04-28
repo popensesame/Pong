@@ -10,9 +10,9 @@ class Game:
         self.pause = pause
         self.screen_rect = screen_rect
         self.screen = screen
-        self.ball = _ball.Ball(self.screen_rect)
-        self.player = _paddle.Paddle(screen_rect, 750, 275)
+        self.player = _paddle.Paddle(screen_rect, 740, 275)
         self.computer = _paddle.Paddle(screen_rect, 50, 275)
+        self.ball = _ball.Ball(self.screen_rect, self.player.rect)
         self.done = False
         self.ball.set_ball()
         self.score = [0, 0]
@@ -39,10 +39,16 @@ class Game:
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 self.done = True
-            if event.key == pg.K_UP:
-                self.player.move(-25)
-            if event.key == pg.K_DOWN:
-                self.player.move(25)
+            if not self.pause:
+                if event.key == pg.K_SPACE:
+                    self.pause = True
+                if event.key == pg.K_UP:
+                    self.player.move(-22)
+                if event.key == pg.K_DOWN:
+                    self.player.move(22)
+            else:
+                if event.key == pg.K_SPACE:
+                    self.pause = False
 
     def adjust_score(self, hit_wall):
         if hit_wall == -1:
@@ -51,14 +57,24 @@ class Game:
             self.score[0] += 1
 
     def update(self):
-        hit_wall = self.ball.update(self.computer.rect, self.player.rect)
-        if hit_wall:
-            self.adjust_score(hit_wall)
-            self.ball.set_ball()
-        self.computer.move_computer(self.ball.rect.y, self.ball.moving_away_from_ai)
+        if not self.pause:
+            hit_wall = self.ball.update(self.computer.rect, self.player.rect)
+            if hit_wall:
+                self.adjust_score(hit_wall)
+                self.player.reset()
+                self.computer.reset()
+                self.ball.set_ball()
+                self.pause = True
+            self.computer.move_computer(self.ball.rect.y, self.ball.moving_away_from_ai)
+        else:
+            pass
 
     def cleanup(self):
         self.score = [0, 0]
+        self.player.reset()
+        self.computer.reset()
+        self.ball.set_ball()
+        self.pause = True
 
 
 

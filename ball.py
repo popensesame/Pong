@@ -5,9 +5,10 @@ import random
 
 
 class Ball:
-    def __init__(self, screen_rect, x=400, y=300, width=7, height=7, speed=7, color=(255, 255, 255)):
+    def __init__(self, screen_rect, player_rect, x=400, y=300, width=7, height=7, speed=9, color=(255, 255, 255)):
         self.surface = pg.Surface([width, height])
         self.rect = self.surface.get_rect()
+        self.player_rect = player_rect
         self.rect.x = x
         self.rect.y = y
         self.screen_rect = screen_rect
@@ -27,8 +28,8 @@ class Ball:
     def set_ball(self):
         x = self.get_random_float()
         y = self.get_random_float()
-        self.rect.x = 400
-        self.rect.y = 300
+        self.rect.x, self.rect.y = self.player_rect.midleft
+        self.rect.x -= 8
         self.velocity = [x*self.speed, y*self.speed]
 
     def move(self):

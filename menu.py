@@ -15,6 +15,7 @@ class Menu:
 
     def get_event(self, event, keys):
         if event.type == pg.QUIT:
+            pg.font.quit()
             pg.quit()
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_DOWN and self.highlighted == "START":
@@ -29,6 +30,7 @@ class Menu:
 
     def start_button(self, color):
         start_text = "START"
+        pg.font.init()
         start_obj = pg.font.Font(None, 48)
         start_surface = start_obj.render(start_text, False, color)
         start_surface_rect = start_surface.get_rect()

@@ -8,9 +8,14 @@ class Paddle:
         self.screen_rect = screen_rect
         self.surface = pg.Surface([width, height])
         self.rect = self.surface.get_rect()
+        self.reset_x = x
+        self.reset_y = y
         self.rect.x = x
         self.rect.y = y
         self.color = color
+
+    def reset(self):
+        self.rect.x, self.rect.y = self.reset_x, self.reset_y
 
     def move(self, y):
         self.rect.y += y
