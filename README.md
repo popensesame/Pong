@@ -17,4 +17,4 @@ Run
 
   or
 
-  $ ./python2.7.6/bin/python.27 ./app.py
+  $ ./python2.7.6/bin/python2.7 ./app.py
