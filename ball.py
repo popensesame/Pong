@@ -5,7 +5,7 @@ import random
 
 
 class Ball:
-    def __init__(self, screen_rect, x=400, y=300, width=5, height=5, speed=5, color=(255, 255, 255)):
+    def __init__(self, screen_rect, x=400, y=300, width=7, height=7, speed=7, color=(255, 255, 255)):
         self.surface = pg.Surface([width, height])
         self.rect = self.surface.get_rect()
         self.rect.x = x
