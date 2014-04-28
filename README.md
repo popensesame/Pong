@@ -14,3 +14,8 @@ Run
   While in Pong directory:
 
   $ python app.py
+
+Issues
+------
+
+  Doesn't exit cleanly (pygame.error: display Surface quit)
